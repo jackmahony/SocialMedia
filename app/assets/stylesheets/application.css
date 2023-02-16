@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding-top: 55px;
+
+}
+
+a, p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+}
+
+button {
+    border: none;
+}
+
+p {
+    color: rgb(17, 16, 16);
+}
+
+span {
+    font-weight: 600;
+}
+
+.nav {
+    top: 0;
+    display: flex;
+    justify-content:  space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    background-image: linear-gradient(to right, #405DE6 , #E1306C);
+    height: 35px;
+    transition: all 0.5s ease-in-out;
+}
+
+.nav.hidden {
+    transform: translateY(-100%);
+  }
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1em;
+
+}
+
+.main {
+    background-color: none;
+    padding: .25em;
+    max-width: 500px;
+    margin: auto;
+    z-index: 1;
+}
+
+.notice, .alert {
+    /* background-color: rgb(113, 241, 162, 0.3); */
+    padding: 1em;
+    position: absolute;
+    z-index: 99;
+    margin: auto;
+}
+
+.post {
+    margin: .2em;
+    padding: 1em;
+    max-width: 500px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: .2em;
+    margin-bottom: 2em;
+}
+
+.post-body {
+    display: block;
+    background-color: #efefef;
+    max-width: 450px;
+     
+    /* added for testing  */
+    min-height: 250px;
+}
+
+.avatar {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    background-color: azure;
+  }
+
+.username {
+    
+} 
+
+
+.post-actions-like, .post-actions-unlike {
+    width: 24px;
+    height: 24px;
+  }
+  
+.post-actions-like {
+    background: url('like.svg');
+    background-size: contain;
+    display: block;
+  }
+  
+.post-actions-unlike {
+    background: url('unlike.svg');
+    background-size: contain;
+    display: block;
+  }
+
+   
