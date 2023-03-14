@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
     before_action :set_post
-
-    
     def new
     end    
 

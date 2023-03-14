@@ -8,8 +8,13 @@
     </div> 
     
     <%= turbo_frame_tag "post-likes" do %>
-         <%= button_to "", post_likes_path(post), class: "post-actions-like" %>
-    <% end %> 
+        <% if  post.likes.exists? %>
+            <%= button_to "", post_likes_path(post), class: "post-actions-unlike" %>
+        <% else %>
+            <%= button_to "", post_likes_path(post), class: "post-actions-like" %>
+        <% end %>    
+    <% end  %>
+    
     <%= render "comments/form", post: post %>
     
     <div id ="comments">
