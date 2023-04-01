@@ -8,12 +8,14 @@
     </div> 
     
     <%= turbo_frame_tag "post-likes" do %>
-        <% if  post.likes.exists? %>
-            <%= button_to "", post_likes_path(post), class: "post-actions-unlike" %>
+        <% if current_user && (like = Like.find_by(user_id: current_user.id, likeable: post, liked: true)) %>
+            <%= button_to "", post_like_path(post, likeable_id: post.id, likeable_type: 'Post', user: current_user), class: "post-actions-unlike", method: :delete %>
+            <%# Delete like %>
         <% else %>
             <%= button_to "", post_likes_path(post), class: "post-actions-like" %>
-        <% end %>    
-    <% end  %>
+            <%# Add like %>
+        <% end %>
+    <% end %>
     
     <%= render "comments/form", post: post %>
     
