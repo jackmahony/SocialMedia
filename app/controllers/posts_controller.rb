@@ -1,17 +1,6 @@
 class PostsController < ApplicationController
   def index
     @post = Post.all
-
-  #   # First, find the "Like" record for the current user with "liked" set to false
-  #   like = current_user.likes.find_by(liked: false)
-
-  #   if current_user && like
-  #     # Set an instance variable to be used in your view
-  #     @post_actions_unlike = "post-actions-unlike"
-  #   else
-  #     # Set another instance variable for your view
-  #     @post_actions_like = "like-button-liked"
-  #   end
   end  
 
   def new

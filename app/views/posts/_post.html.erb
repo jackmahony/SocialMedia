@@ -19,9 +19,11 @@
     
     <%= render "comments/form", post: post %>
     
-    <div id ="comments">
-     <%= render post.comments %>
-    </div> 
+    <div id="comments">
+        <%= turbo_frame_tag "comments_for_post_#{post.id}" do %>
+            <%= render post.comments %>
+        <% end %>
+    </div>
 
     <%# LONG HAND %>
     <%# <%= render partial: "comments/comment", collection: post.comments %>

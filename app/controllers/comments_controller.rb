@@ -8,10 +8,12 @@ class CommentsController < ApplicationController
         comment.post = @post
         comment.user = current_user
         if comment.save
+          # Return a Turbo Stream response that appends the comment to the correct post
+          render turbo_stream: turbo_stream.append("comments_for_post_#{@post.id}", partial: "comments/comment", locals: { comment: comment })
         else
-            render :new, status: :unprocessable_entity
+          render :new, status: :unprocessable_entity
         end
-    end   
+      end   
 
     private
         def set_post
