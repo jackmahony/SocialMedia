@@ -1,7 +1,6 @@
 class LikesController < ApplicationController
     before_action :set_post
-    # before_action :set_like, only: [:destroy]
-
+    
   def create
       @like = @post.likes.build(liked: true, user: current_user)
       if @like.save

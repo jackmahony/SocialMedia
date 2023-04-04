@@ -6,10 +6,4 @@ class User < ApplicationRecord
   has_many :comments 
   has_many :posts
   has_many :likes
-
-  # has_many :likes
-
-  def like!(post)
-    likes << Like.new(post: post)
-  end  
 end
