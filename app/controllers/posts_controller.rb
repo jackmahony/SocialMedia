@@ -23,10 +23,4 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:body)
     end  
-    
-    
-    # def set_current_user
-    #   Current.user = current_user
-    # end
-   
 end

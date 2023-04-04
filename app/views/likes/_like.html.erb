@@ -1,0 +1,9 @@
+ <%= turbo_frame_tag "post-likes" do %>
+    <% if current_user && (like = Like.find_by(user_id: current_user.id, likeable: post, liked: true)) %>
+        <%= button_to "", post_like_path(post, like), class: "post-actions-unlike", method: :delete %>
+        <%# Delete like %>
+    <% else %>
+        <%= button_to "", post_likes_path(post, like: { likeable_id: post.id, likeable_type: 'Post' }), class: "post-actions-like" %>
+        <%# Add like %>
+    <% end %> 
+<% end %>
