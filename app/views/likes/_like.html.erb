@@ -1,9 +1,16 @@
- <%= turbo_frame_tag "post-likes" do %>
-    <% if current_user && (like = Like.find_by(user_id: current_user.id, likeable: post, liked: true)) %>
-        <%= button_to "", post_like_path(post, like), class: "post-actions-unlike", method: :delete %>
-        <%# Delete like %>
-    <% else %>
-        <%= button_to "", post_likes_path(post, like: { likeable_id: post.id, likeable_type: 'Post' }), class: "post-actions-like" %>
-        <%# Add like %>
-    <% end %> 
+<%= turbo_frame_tag "#{likeable.class.name.downcase}-likes-#{likeable.id}" do %>
+    <%# DISLIKE BUTTON %>
+  <% if current_user && (like = Like.find_by(user_id: current_user.id, likeable: likeable, liked: true)) %>
+    <%= button_to "", like_path(likeable_id: like.likeable_id), class: "post-actions-unlike", method: :delete %>
+  <% else %>
+    <%# LIKE BUTTON %>
+    <%= button_to likes_path(likeable), class: "post-actions-like", method: :post do %>
+      <%= hidden_field_tag "like[likeable_id]", likeable.id %>
+      <%= hidden_field_tag "like[likeable_type]", likeable.class.name %>
+    <% end %>
+  <% end %>
 <% end %>
+
+
+
+

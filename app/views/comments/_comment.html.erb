@@ -3,6 +3,9 @@
         <%= comment.user.username %> 
     </span>
         <%= comment.body %>
+
+    <%= render "likes/like", likeable: comment %>
+    
 </div>
 
 

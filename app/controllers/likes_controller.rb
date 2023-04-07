@@ -1,6 +1,4 @@
-class LikesController < ApplicationController
-  before_action :set_post
-  
+class LikesController < ApplicationController  
   def create
     @like = current_user.likes.new(like_params)
     @like.liked = true
@@ -11,18 +9,23 @@ class LikesController < ApplicationController
   end
 
   def destroy  
-    @like = current_user.likes.find_by(id: params[:id])
-    likeable = @like.likeable
-    @like.destroy
-    redirect_to root_path
+    @like = current_user.likes.find_by(likeable_id: params[:likeable_id])
+    
+    if @like
+      likeable = @like.likeable
+      @like.destroy
+      redirect_to root_path, notice: 'Like removed.'
+    else
+      redirect_to root_path, alert: 'Like not found.'
+    end
   end
 
   private
-    def set_post
-      @post = Post.find(params[:post_id])
-    end
-    
     def like_params
       params.require(:like).permit(:likeable_id, :likeable_type)
-     end
+    end
+
+  
+    
 end
+

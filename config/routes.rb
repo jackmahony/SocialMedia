@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end  
   
+  resources :likes, only: [:create, :destroy], param: :likeable_id
+
+
   devise_for :users
   root "site#index"
 
